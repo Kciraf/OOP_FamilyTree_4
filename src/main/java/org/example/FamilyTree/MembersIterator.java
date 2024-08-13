@@ -5,11 +5,11 @@ import org.example.Human.Human;
 import java.util.Iterator;
 import java.util.List;
 
-public class MembersIterator implements Iterator<Human> {
+public class MembersIterator<H extends MemberFamilyTree> implements Iterator<H> {
     private int curId;
-    private List<Human> family;
+    private List<H> family;
 
-    public MembersIterator(List<Human> family){
+    public MembersIterator(List<H> family){
         this.family = family;
     };
 
@@ -19,7 +19,7 @@ public class MembersIterator implements Iterator<Human> {
     }
 
     @Override
-    public Human next() {
+    public H next() {
         return family.get(curId++);
     }
 }

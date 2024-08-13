@@ -1,12 +1,14 @@
 package org.example.Human;
 
+import org.example.FamilyTree.MemberFamilyTree;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Human implements Serializable, Comparable<Human> {
+public class Human implements Serializable, Comparable<Human>, MemberFamilyTree<Human> {
     private long id;
     private String name;
     private LocalDate dayBirth, dayDeath;
