@@ -1,6 +1,6 @@
-package org.example.Human;
+package org.example.model.Human;
 
-import org.example.FamilyTree.MemberFamilyTree;
+import org.example.model.FamilyTree.MemberFamilyTree;
 
 import java.util.Comparator;
 

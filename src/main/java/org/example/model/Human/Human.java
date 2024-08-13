@@ -1,14 +1,13 @@
-package org.example.Human;
+package org.example.model.Human;
 
-import org.example.FamilyTree.MemberFamilyTree;
+import org.example.model.FamilyTree.MemberFamilyTree;
 
-import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Human implements Serializable, Comparable<Human>, MemberFamilyTree<Human> {
+public class Human implements MemberFamilyTree<Human>, Comparable<Human> {
     private long id;
     private String name;
     private LocalDate dayBirth, dayDeath;
@@ -42,6 +41,11 @@ public class Human implements Serializable, Comparable<Human>, MemberFamilyTree<
     //Минимальный вариант для человека. Не знаем его родственных связей.
     public Human(String name, LocalDate do_birth, Gender gender) {
         this(name, do_birth, null, gender, null, null);
+    }
+
+    public Human(long id, String name, LocalDate do_birth, Gender gender) {
+        this(name, do_birth, null, gender, null, null);
+        this.id = id;
     }
 
     public boolean addChild(Human child) {

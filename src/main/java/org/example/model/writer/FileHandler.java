@@ -1,4 +1,4 @@
-package org.example.writer;
+package org.example.model.writer;
 
 import java.io.*;
 
@@ -8,6 +8,7 @@ public class FileHandler implements Writable {
     public void setFilePlace(String place){
         this.fileplace = place;
     }
+
     @Override
     public void write(Serializable serializable) {
         try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(fileplace))) {

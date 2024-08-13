@@ -1,4 +1,4 @@
-package org.example.writer;
+package org.example.model.writer;
 
 import java.io.Serializable;
 

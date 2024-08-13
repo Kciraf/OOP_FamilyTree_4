@@ -1,7 +1,6 @@
-package org.example.FamilyTree;
+package org.example.model.FamilyTree;
 
-import org.example.Human.Human;
-import org.example.Human.HumanComparatorByAge;
+import org.example.model.Human.HumanComparatorByAge;
 
 import java.io.Serializable;
 import java.util.*;
