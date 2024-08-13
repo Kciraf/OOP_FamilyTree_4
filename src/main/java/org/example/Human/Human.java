@@ -1,11 +1,12 @@
-package org.example;
+package org.example.Human;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Human {
+public class Human implements Serializable {
     private long id;
     private String name;
     private LocalDate dayBirth, dayDeath;
@@ -61,12 +62,12 @@ public class Human {
         return false;
     }
 
-    public List<Human> getParents(){
+    public List<Human> getParents() {
         List<Human> list = new ArrayList<>(2);
-        if (father != null){
+        if (father != null) {
             list.add(father);
         }
-        if (mother != null){
+        if (mother != null) {
             list.add(mother);
         }
         return list;
@@ -148,30 +149,38 @@ public class Human {
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("Имя: " + name + "\n");
-        stringBuilder.append("Дата рождения: " + dayBirth + "\n");
-        if (dayDeath != null) {
-            stringBuilder.append("Дата смерти: " + dayDeath + "\n");
+        stringBuilder.append("Имя: " + name + "  ");
+        if (dayBirth != null) {
+            stringBuilder.append("Дата рождения: " + dayBirth.toString() + "  ");
         }
-        stringBuilder.append("Пол: " + dayDeath + "\n");
+        if (dayDeath != null) {
+            stringBuilder.append("Дата смерти: " + dayDeath.toString() + "  ");
+        } else {stringBuilder.append("Дата смерти: еще жив  ");}
+        if (gender != null) {
+            stringBuilder.append("Пол: ");
+            stringBuilder.append(gender);
+            stringBuilder.append("  ");
+        }
         if (father != null) {
-            stringBuilder.append("Имя отца: " + father.getName() + "\n");
+            stringBuilder.append("Имя отца: " + father.getName() + "  ");
         } else {
-            stringBuilder.append("Имя отца: неизвестно \n");
+            stringBuilder.append("Имя отца: неизвестно   ");
         }
         if (mother != null) {
-            stringBuilder.append("Имя матери: " + mother.getName() + "\n");
+            stringBuilder.append("Имя матери: " + mother.getName() + "  ");
         } else {
-            stringBuilder.append("Имя матери: неизвестно \n");
+            stringBuilder.append("Имя матери: неизвестно   ");
         }
-        if (children == null) {
-            stringBuilder.append("Детей нет\n");
+        if (children.isEmpty() || children == null) {
+            stringBuilder.append("Детей нет  ");
         } else {
             stringBuilder.append("Список детей: ");
             for (Human familyMem : this.children) {
                 stringBuilder.append(familyMem.getName());
+                stringBuilder.append(" ");
             }
         }
+        stringBuilder.append("\n");
         return stringBuilder.toString();
     }
 

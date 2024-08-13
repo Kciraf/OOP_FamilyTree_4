@@ -1,4 +1,4 @@
-package org.example;
+package org.example.Human;
 
 public enum Gender {
     Male, Female

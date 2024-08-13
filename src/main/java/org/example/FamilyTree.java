@@ -1,5 +1,7 @@
 package org.example;
 
+import org.example.Human.Human;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -62,7 +64,7 @@ public class FamilyTree implements Serializable {
                 // то задваиваем всех, кроме того, для кого ищем братьев/сестер
                 personDublFlag = false;
                 for (Human checkChild : broSis) {
-                    if (checkChild.equals(child)){
+                    if (checkChild.equals(child)) {
                         personDublFlag = true;
                         break;
                     }
@@ -99,8 +101,8 @@ public class FamilyTree implements Serializable {
         return null;
     }
 
-    public boolean remove(long id){
-        if(checkId(id)){
+    public boolean remove(long id) {
+        if (checkId(id)) {
             Human member = getById(id);
             return family.remove(member);
         }
@@ -108,7 +110,7 @@ public class FamilyTree implements Serializable {
     }
 
     private boolean checkId(long id) {
-        return id < memberId && id >=0;
+        return id < memberId && id >= 0;
     }
 
     public Human getById(long id) {
@@ -120,4 +122,15 @@ public class FamilyTree implements Serializable {
         return null;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder treeAll = new StringBuilder();
+        treeAll.append("В семейном древе находятся: ");
+        treeAll.append(family.size());
+        treeAll.append(" членов: \n");
+        for (Human member : family) {
+            treeAll.append(member);
+        }
+        return treeAll.toString();
+    }
 }
