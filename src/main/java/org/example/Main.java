@@ -1,7 +1,9 @@
 package org.example;
 
+import org.example.FamilyTree.FamilyTree;
 import org.example.Human.Gender;
 import org.example.Human.Human;
+import org.example.Service.Service;
 import org.example.writer.FileHandler;
 
 import java.io.IOException;
@@ -9,12 +11,19 @@ import java.time.LocalDate;
 
 public class Main {
     public static void main(String[] args) throws IOException, ClassNotFoundException {
-        //FamilyTree tree = treeForUse();
+        FamilyTree tree = treeForUse();
+        Service service = new Service(tree);
+
 
 //        writeTree(tree);
 //        System.out.println(tree);
 
-        FamilyTree tree = readTree();
+//        FamilyTree tree = readTree();
+//        System.out.println(tree);
+        System.out.println(tree);
+        service.sortByName();
+        System.out.println(tree);
+        service.sortByAge();
         System.out.println(tree);
     }
         private static void writeTree(FamilyTree tree){

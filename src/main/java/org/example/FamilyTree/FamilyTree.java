@@ -1,12 +1,12 @@
-package org.example;
+package org.example.FamilyTree;
 
 import org.example.Human.Human;
+import org.example.Human.HumanComparatorByAge;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
-public class FamilyTree implements Serializable {
+public class FamilyTree implements Serializable, Iterable<Human> {
     private List<Human> family;
     private long memberId;
 
@@ -122,6 +122,13 @@ public class FamilyTree implements Serializable {
         return null;
     }
 
+    public void sortByName(){
+        Collections.sort(family);
+    }
+
+    public void sortByAge(){
+        Collections.sort(family,new HumanComparatorByAge());
+    }
     @Override
     public String toString() {
         StringBuilder treeAll = new StringBuilder();
@@ -132,5 +139,11 @@ public class FamilyTree implements Serializable {
             treeAll.append(member);
         }
         return treeAll.toString();
+    }
+
+
+    @Override
+    public Iterator<Human> iterator() {
+        return new MembersIterator(family);
     }
 }
